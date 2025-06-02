@@ -1,0 +1,81 @@
+.navbar {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 15px 0; /* Add vertical padding */
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #4a4a32 !important; /* Olive green text */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .navbar-brand:hover, .nav-link:hover {
+    color: #3b3b28; /* Darker olive green on hover */
+    text-decoration: none; /* Remove underline on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  .navbar-nav .nav-item {
+    display: flex;
+    align-items: center; /* Vertically center nav items */
+  }
+  
+  .navbar-nav .nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Light gray background on hover */
+    border-radius: 5px; /* Rounded corners for hover effect */
+  }
+  
+  .btn-demo {
+    background-color: #4a4a32;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+  }
+  
+  .btn-demo:hover {
+    background-color: #3b3b28;
+  }
+  
+  .hero-section {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #6c757d;
+  }
+  
+  .illustration {
+    margin-top: 40px;
+  }
+  
+  .cards-section {
+    margin-top: 40px;
+  }
+  
+  .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  /* Hover effect for cards */
+.hover-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Center the icon at the top of the card */
+.card-body i {
+  display: block;
+  margin: 0 auto;
+}

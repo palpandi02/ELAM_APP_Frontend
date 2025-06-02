@@ -1,0 +1,32 @@
+body {
+  background-color: #f4f4f4; /* Light gray background */
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.input-group-text {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin: 0 15px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,15 @@
+/* Hover effect for cards */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Badge styling */
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.5em 0.75em;
+  }

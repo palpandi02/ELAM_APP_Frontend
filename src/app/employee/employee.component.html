@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <!-- Employee List -->
+  <div *ngIf="!isAddEmployeeFormVisible">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+      <!-- Search Bar -->
+      <div class="d-flex flex-grow-1 me-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by name or email"
+          [(ngModel)]="searchQuery"
+          (input)="filterEmployees()"
+        />
+      </div>
+
+      <!-- Add Employee Button -->
+      <button class="btn btn-success" (click)="showAddEmployeeForm()">
+        <i class="fas fa-plus"></i> Add Employee
+      </button>
+    </div>
+
+    <div class="table-responsive shadow-sm rounded bg-white">
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-primary">
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Department</th>
+            <th>Contact</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.role }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.contact }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-warning me-2" (click)="editEmployee(employee)">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee.id)">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add/Update Employee Form -->
+  <app-add-employee
+    *ngIf="isAddEmployeeFormVisible"
+    [employee]="editingEmployee"
+    (formSubmit)="onFormSubmit($event)"
+    (cancel)="isAddEmployeeFormVisible = false">
+  </app-add-employee>
+</div>

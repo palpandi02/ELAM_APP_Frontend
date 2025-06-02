@@ -1,0 +1,53 @@
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+}
+
+.table {
+  font-size: 0.95rem;
+}
+
+.table th {
+  text-align: center;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.card {
+  border-radius: 0.5rem;
+}
+
+.card-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-body {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .table {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+.d-flex.flex-wrap {
+  gap: 10px; /* Add spacing between search bar and button */
+}
+
+@media (max-width: 768px) {
+  .d-flex.flex-wrap {
+    flex-direction: column; /* Stack search bar and button vertically on small screens */
+  }
+
+  .btn {
+    width: 100%; /* Make the button full-width on small screens */
+  }
+}

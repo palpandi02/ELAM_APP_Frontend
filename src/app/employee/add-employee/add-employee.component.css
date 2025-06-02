@@ -1,0 +1,24 @@
+body {
+    background-color: #f4f4f4; /* Light gray background */
+  }
+  
+  .container {
+    max-width: 600px;
+  }
+  
+  .card {
+    border-radius: 10px;
+  }
+  
+  .card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .form-label i {
+    margin-right: 5px;
+  }
+  
+  button {
+    font-weight: bold;
+  }
