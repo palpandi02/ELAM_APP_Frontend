@@ -10,6 +10,8 @@ import { EmployeeShiftComponent } from './shift/employee-shift/employee-shift.co
 import { ShiftComponent } from './shift/shift.component';
 import { SwapShiftComponent } from './shift/swap-shift/swap-shift.component';
 import { ManagerShiftComponent } from './shift/manager-shift/manager-shift.component';
+import { EmployeereportComponent } from './report/employeereport/employeereport.component';
+import { ReportComponent } from './report/report.component';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent }, // Default landing page
@@ -20,5 +22,6 @@ export const routes: Routes = [
     {path:'eshift',component:EmployeeShiftComponent},
     {path:"swap",component:SwapShiftComponent},
     {path:'mshift',component:ManagerShiftComponent},
+    {path:'report',component:ReportComponent},
     { path: '**', redirectTo: '' } // Fallback route
 ];
