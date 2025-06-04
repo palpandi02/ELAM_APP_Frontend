@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit {
-  userRole: string | null = null;
+  userRole: string;
 
   ngOnInit() {
     this.userRole = localStorage.getItem('role');

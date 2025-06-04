@@ -56,15 +56,10 @@
   }
 
   .content {
-    margin-left: 0; /* Content takes full width when sidebar is hidden */
+    margin-left: 250px; /* Content takes full width when sidebar is hidden */
   }
 }
 
-@media (min-width: 992px) {
-  .content {
-    margin-left: 250px; /* Adjust content to account for the sidebar width */
-  }
-}
 /* Add these styles to the existing CSS */
 .sidebar ul li a i.fas.fa-users-cog,
 .sidebar ul li a i.fas.fa-exchange-alt {

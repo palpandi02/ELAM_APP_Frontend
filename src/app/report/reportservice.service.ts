@@ -32,18 +32,5 @@ export class ReportserviceService {
     );
   }
 
-  // Get reports for all employees
-  getAllEmployeeReports(): Observable<any> {
-    const headers = this.getHeaders();
-    return this.http.get(`${this.apiUrl}/all`, { headers }).pipe(
-      map(response => {
-        console.log('All employee reports fetched successfully', response);
-        return response;
-      }),
-      catchError(error => {
-        console.error('Failed to fetch all employee reports', error);
-        return throwError(() => new Error('Failed to fetch all employee reports'));
-      })
-    );
-  }
+  
 }

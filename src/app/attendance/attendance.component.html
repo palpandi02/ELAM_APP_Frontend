@@ -1,1 +1,2 @@
-<p>attendance works!</p>
+<app-employeeatendance *ngIf="userRole === 'Employee'"></app-employeeatendance>
+<app-manageratendance *ngIf="userRole === 'Manager'"></app-manageratendance>

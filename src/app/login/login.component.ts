@@ -34,7 +34,9 @@ export class LoginComponent {
           next: (role) => {
             console.log("User role:", role);
             localStorage.setItem('role', role); // Store the role
-            this.router.navigate(['/']); // Navigate to the landing page
+            this.router.navigate(['/']).then(() => {
+              window.location.reload();
+             }); // Navigate to the landing page
           },
           error: (error) => {
             console.error("Failed to fetch user role", error);

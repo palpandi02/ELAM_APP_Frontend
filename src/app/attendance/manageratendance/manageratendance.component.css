@@ -1,0 +1,42 @@
+.card {
+    transition: transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .input-group {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .input-group-text {
+    background-color: #f8f9fa;
+    border-right: none;
+  }
+  
+  input[type="date"],
+  input[type="text"] {
+    border-left: none;
+  }
+  
+  input[type="date"]:focus,
+  input[type="text"]:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+  }
+  
+  .table {
+    font-size: 0.95rem;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-4 {
+      margin-bottom: 1rem;
+    }
+  }

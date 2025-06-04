@@ -2,13 +2,13 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container d-flex justify-content-between align-items-center">
-      <a class="navbar-brand text-primary fw-bold" href="#">ELAM APP</a>
+      <a class="navbar-brand text-primary fw-bold" routerLink="#">ELAM APP</a>
       <div class="d-flex align-items-center">
         <!-- Display username and logout button after login -->
         <span *ngIf="isLoggedIn" class="me-3">{{ username }}</span>
         <button *ngIf="isLoggedIn" class="btn btn-outline-dark me-2" (click)="logout()">Logout</button>
         <!-- Display sign-in button before login -->
-        <a *ngIf="!isLoggedIn" class="btn btn-outline-dark me-2" routerLink="/login">Sign in</a>
+        <button *ngIf="!isLoggedIn" class="btn btn-outline-dark me-2" routerLink="/login">Sign in</button>
       </div>
       <!-- Navbar Toggler for Sidebar -->
       <button
@@ -27,7 +27,7 @@
 
   <!-- Sidebar and Content -->
   <div class="d-flex">
-    <!-- Sidebar visible only for logged-in managers -->
+    <!-- Sidebar visible only for logged-in  -->
     <app-sidebar *ngIf="isLoggedIn" id="sidebar"></app-sidebar>
     <div class="content flex-grow-1 bg-light">
       <router-outlet></router-outlet>
