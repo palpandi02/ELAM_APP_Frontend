@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../userservice.service';
@@ -10,15 +10,23 @@ import { UserService } from '../userservice.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginError: boolean = false;
-
+  isLoggedIn: boolean = false;
   constructor(private fb: FormBuilder, private router: Router,private userService: UserService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
+  }
+  ngOnInit(): void {
+    if(localStorage.getItem('token')) {
+      this.isLoggedIn = true; // Check if the user is already logged in
+      this.router.navigate(['/']); // Redirect to the landing page if already logged in
+    } else {
+      this.isLoggedIn = false; // User is not logged in
+    }
   }
 
   onSubmit(): void {
@@ -34,6 +42,7 @@ export class LoginComponent {
           next: (role) => {
             console.log("User role:", role);
             localStorage.setItem('role', role); // Store the role
+            this.isLoggedIn = true; // Set the login status
             this.router.navigate(['/']).then(() => {
               window.location.reload();
              }); // Navigate to the landing page

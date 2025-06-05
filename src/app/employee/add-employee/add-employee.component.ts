@@ -14,7 +14,7 @@ export class AddEmployeeComponent implements OnInit, OnChanges {
   @Output() formSubmit = new EventEmitter<Employee>(); // Output to notify parent
   @Output() cancel = new EventEmitter<void>(); // Output to notify parent when cancel is clicked
   employeeForm!: FormGroup;
-
+  isEmployee=localStorage.getItem('role') === 'Employee'; // Check if the user is an employee
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -36,7 +36,9 @@ export class AddEmployeeComponent implements OnInit, OnChanges {
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['Employee', [Validators.required]],
+      role: [{
+        value:'Employee',
+        disabled: this.isEmployee}, [Validators.required]],
       department: ['', [Validators.required]],
       contact: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });

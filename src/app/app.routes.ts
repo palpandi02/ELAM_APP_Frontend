@@ -12,6 +12,7 @@ import { ReportComponent } from './report/report.component';
 import { EmployeeatendanceComponent } from './attendance/employeeatendance/employeeatendance.component';
 import { ManageratendanceComponent } from './attendance/manageratendance/manageratendance.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     { path: '', component: LandingPageComponent }, // Default landing page
@@ -20,8 +21,8 @@ export const routes: Routes = [
     { path: 'register', component: RegistrationComponent }, // Registration page
     {path:'leave',component:LeaveComponent},
     {path:'shift',component:EmployeeShiftComponent},
-    {path:"swap-shift",component:SwapShiftComponent},
-    {path:'manager-shift',component:ManagerShiftComponent},
+    {path:"swap-shift",component:SwapShiftComponent,canActivate:[authGuard]}, // Swap shift page, accessible only to managers
+    {path:'manager-shift',component:ManagerShiftComponent,canActivate:[authGuard]}, // Manager shift management page
     {path:'report',component:ReportComponent},
     {path:'attendance', component:AttendanceComponent},
     { path: '**', redirectTo: '' } // Fallback route

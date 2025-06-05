@@ -85,7 +85,14 @@ export class EmployeereportComponent implements OnInit, OnDestroy,OnChanges {
     }
   }
   ngOnInit(): void {
-    const employeeId = Number(localStorage.getItem('userId'));
+    let employeeId: number;
+    const role:String=localStorage.getItem('role')||'';
+    if (role === 'Manager') {
+      employeeId= Number(localStorage.getItem('selectedEmployeeId'))
+    }
+    else{
+      employeeId = Number(localStorage.getItem('userId'));
+    }
     if (!employeeId) {
       console.error('No employee ID found in localStorage');
       return;
@@ -139,7 +146,7 @@ export class EmployeereportComponent implements OnInit, OnDestroy,OnChanges {
       data: {
         labels: Object.keys(monthlyData.WeeklyAverageHours),
         datasets: [{
-          label: 'Weekly Average Hours',
+          label: 'Weekly Average Hours', 
           data: Object.values(monthlyData.WeeklyAverageHours),
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1,

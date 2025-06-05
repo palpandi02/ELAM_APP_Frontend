@@ -25,6 +25,7 @@ export class ReportComponent implements OnInit {
   generateReport() {
     if (this.employeeIdInput) {
       this.selectedEmployeeId = Number(this.employeeIdInput);
+      localStorage.setItem('selectedEmployeeId', this.employeeIdInput);
     }
   }
 }
