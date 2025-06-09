@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-shift',
-  imports: [DatePipe,CommonModule,FormsModule],
+  imports: [DatePipe, CommonModule, FormsModule],
   templateUrl: './employee-shift.component.html',
   styleUrls: ['./employee-shift.component.css']
 })
@@ -45,7 +45,26 @@ export class EmployeeShiftComponent implements OnInit {
     }
   }
 
+  // Check if shift date is in the past
+  isShiftDatePast(shiftDate: string): boolean {
+    const today = new Date();
+    const shift = new Date(shiftDate);
+    
+    // Set time to 00:00:00 for accurate date comparison
+    today.setHours(0, 0, 0, 0);
+    shift.setHours(0, 0, 0, 0);
+    
+    return shift < today;
+  }
+
   requestSwap(shiftId: number): void {
+    // Find the shift to check if it's a past date
+    const shift = this.shifts.find(s => s.id === shiftId);
+    if (shift && this.isShiftDatePast(shift.date)) {
+      alert('Cannot request swap for past shift dates.');
+      return;
+    }
+
     this.shiftService.requestShiftSwap(shiftId).subscribe({
       next: () => {
         alert('Shift swap request submitted successfully.');
