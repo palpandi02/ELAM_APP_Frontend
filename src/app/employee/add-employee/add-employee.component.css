@@ -1,24 +1,89 @@
 body {
-    background-color: #f4f4f4; /* Light gray background */
-  }
-  
-  .container {
-    max-width: 600px;
-  }
-  
+  background-color: #f4f4f4; /* Light gray background */
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.input-group-text {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.invalid-feedback {
+  display: block;
+  font-size: 0.875rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+.btn {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.alert {
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert-success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.form-text {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
   .card {
-    border-radius: 10px;
+    margin: 0 15px;
   }
-  
-  .card-header {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+
+  .btn {
+    font-size: 0.9rem;
   }
-  
-  .form-label i {
-    margin-right: 5px;
+
+  .d-flex {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  button {
-    font-weight: bold;
+
+  .btn {
+    width: 100%;
   }
+}

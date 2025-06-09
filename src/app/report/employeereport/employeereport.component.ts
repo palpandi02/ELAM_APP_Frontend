@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { ReportserviceService } from '../reportservice.service';
-import { Chart, ChartConfiguration } from 'chart.js/auto';
+import { Chart } from 'chart.js/auto';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -138,8 +138,20 @@ export class EmployeereportComponent implements OnInit, OnDestroy,OnChanges {
   }
 
   private createAttendanceChart(): void {
-    const monthlyData = this.reportData?.attendanceReport.monthlyReport['2025-05'];
-    if (!monthlyData) return;
+    const canvas = document.getElementById('attendanceChart') as HTMLCanvasElement;
+    if (!canvas) {
+      console.warn('Attendance chart canvas not found');
+      return;
+    }
+  
+    // Get current month in YYYY-MM format
+    const currentDate = new Date();
+    const currentMonth = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
+    
+    // Try to get current month data, fallback to attendance records
+    const monthlyData = this.reportData?.attendanceReport?.monthlyReport?.[currentMonth];
+    const attendanceData = this.reportData?.attendanceReport?.attendance;
+  
 
     this.attendanceChart = new Chart('attendanceChart', {
       type: 'line',

@@ -60,3 +60,11 @@ footer {
     margin-right: auto; /* Move the "Sign in" button to the left */
   }
 }
+.user-profile {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(5px);
+}

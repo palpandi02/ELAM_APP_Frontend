@@ -5,7 +5,10 @@
       <a class="navbar-brand text-primary fw-bold" routerLink="#">ELAM APP</a>
       <div class="d-flex align-items-center">
         <!-- Display username and logout button after login -->
-        <span *ngIf="isLoggedIn" class="me-3">{{ username }}</span>
+        <div class="user-profile" *ngIf="isLoggedIn">
+          <i class="fas fa-user-circle me-2"></i>
+          <span class="username">{{ username }}</span>
+        </div>
         <button *ngIf="isLoggedIn" class="btn btn-outline-dark me-2" (click)="logout()">Logout</button>
         <!-- Display sign-in button before login -->
         <button *ngIf="!isLoggedIn" class="btn btn-outline-dark me-2" routerLink="/login">Sign in</button>
