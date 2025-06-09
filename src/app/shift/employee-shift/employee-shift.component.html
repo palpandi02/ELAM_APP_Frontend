@@ -43,8 +43,8 @@
                 [disabled]="shift.swapRequested || isShiftDatePast(shift.date)"
                 (click)="requestSwap(shift.id)"
               >
-                <i class="fas" [ngClass]="shift.swapRequested ? 'fa-check-circle' : 'fa-exchange-alt'"></i>
-                {{ shift.swapRequested ? 'Swap Requested' : 'Request Swap' }}
+                <i class="fas" [ngClass]="shift.swapRequested ? 'fa-check-circle' : 'fa-clock'"></i>
+                {{ shift.swapRequested ? 'Swap Requested' : 'Completed' }}
               </button>
             </td>
           </tr>
