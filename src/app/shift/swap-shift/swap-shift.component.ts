@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-swap-shift',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './swap-shift.component.html',
   styleUrls: ['./swap-shift.component.css']
 })
@@ -60,6 +60,56 @@ export class SwapShiftComponent implements OnInit {
         shift.shiftType === this.searchFilters.shiftType;
       return matchesEmployeeId && matchesDate && matchesType;
     });
+  }
+
+  // Get shift status based on date
+  getShiftStatus(shiftDate: string): string {
+    const today = new Date();
+    const shift = new Date(shiftDate);
+    
+    // Set time to 00:00:00 for accurate date comparison
+    today.setHours(0, 0, 0, 0);
+    shift.setHours(0, 0, 0, 0);
+    
+    if (shift < today) {
+      return 'Completed';
+    } else if (shift > today) {
+      return 'Scheduled';
+    } else {
+      return 'Active';
+    }
+  }
+
+  // Get badge class based on shift status
+  getStatusBadgeClass(shiftDate: string, swapRequested: boolean): string {
+    if (swapRequested) {
+      return 'bg-warning';
+    }
+    
+    const status = this.getShiftStatus(shiftDate);
+    switch (status) {
+      case 'Completed':
+        return 'bg-secondary';
+      case 'Active':
+        return 'bg-success';
+      case 'Scheduled':
+        return 'bg-primary';
+      default:
+        return 'bg-secondary';
+    }
+  }
+
+  // Get display status text
+  getDisplayStatus(shiftDate: string, swapRequested: boolean): string {
+    if (swapRequested) {
+      return 'Swap Requested';
+    }
+    return this.getShiftStatus(shiftDate);
+  }
+
+  // Check if actions should be shown (only for swap requests and not completed shifts)
+  showActions(shiftDate: string, swapRequested: boolean): boolean {
+    return swapRequested && this.getShiftStatus(shiftDate) !== 'Completed';
   }
 
   approveSwap(shiftId: number): void {

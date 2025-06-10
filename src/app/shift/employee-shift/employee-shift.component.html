@@ -18,6 +18,12 @@
     </div>
   </div>
 
+  <!-- Error Message -->
+  <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    {{ errorMessage }}
+  </div>
+
   <!-- Shifts Table -->
   <div class="card shadow-sm">
     <div class="card-body">
@@ -29,7 +35,7 @@
           <tr>
             <th>Shift Type</th>
             <th>Date</th>
-            <th>Swap Request</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -39,12 +45,12 @@
             <td>
               <button
                 class="btn btn-sm"
-                [ngClass]="shift.swapRequested || isShiftDatePast(shift.date) ? 'btn-secondary' : 'btn-primary'"
-                [disabled]="shift.swapRequested || isShiftDatePast(shift.date)"
+                [ngClass]="getButtonClass(shift)"
+                [disabled]="isButtonDisabled(shift)"
                 (click)="requestSwap(shift.id)"
               >
-                <i class="fas" [ngClass]="shift.swapRequested ? 'fa-check-circle' : 'fa-clock'"></i>
-                {{ shift.swapRequested ? 'Swap Requested' : 'Completed' }}
+                <i class="fas" [ngClass]="getButtonIcon(shift)"></i>
+                {{ getButtonText(shift) }}
               </button>
             </td>
           </tr>

@@ -166,7 +166,7 @@
 
         <!-- Buttons -->
         <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+          <button type="button" class="btn btn-outline-secondary" (click)="onCancel()" [disabled]="isEmployee">
             <i class="fas fa-times me-2"></i>Cancel
           </button>
           <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">
