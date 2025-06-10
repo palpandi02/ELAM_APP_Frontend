@@ -13,9 +13,10 @@ export class SwapShiftComponent implements OnInit {
   selectedDate: string = new Date().toISOString().split('T')[0];
   shifts: any[] = [];
   filteredShifts: any[] = [];
+  processDate: string = new Date().toISOString().split('T')[0];
   searchFilters = {
     employeeId: '',
-    date: '',
+    date: new Date().toISOString().split('T')[0], // Set default to today's date
     shiftType: ''
   };
   shiftCounts = {
@@ -34,7 +35,7 @@ export class SwapShiftComponent implements OnInit {
     this.swapService.getAllShifts().subscribe({
       next: (data) => {
         this.shifts = data;
-        this.filteredShifts = [...this.shifts];
+        this.applyFilters(); // Apply filters immediately to show today's data
         this.updateShiftCounts();
       },
       error: (error) => console.error('Error fetching shifts:', error)
@@ -134,5 +135,24 @@ export class SwapShiftComponent implements OnInit {
 
   onDateChange(): void {
     this.updateShiftCounts();
+  }
+
+  // Process swaps method
+  processSwaps(): void {
+    if (!this.processDate) {
+      alert('Please select a date to process swaps');
+      return;
+    }
+
+    this.swapService.processSwaps(this.processDate).subscribe({
+      next: (response) => {
+        alert(response);
+        this.fetchAllShifts(); // Refresh the data
+      },
+      error: (error) => {
+        console.error('Error processing swaps:', error);
+        alert('Failed to process swaps. Please try again.');
+      }
+    });
   }
 }

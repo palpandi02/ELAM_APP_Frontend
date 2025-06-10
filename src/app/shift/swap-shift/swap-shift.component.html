@@ -17,6 +17,28 @@
             >
           </div>
         </div>
+        <!-- Process Swaps Section -->
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-text bg-success text-white">
+              <i class="fas fa-sync-alt"></i>
+            </span>
+            <input 
+              type="date" 
+              id="processDate" 
+              class="form-control"
+              [(ngModel)]="processDate"
+              placeholder="Select date to process"
+            >
+            <button 
+              class="btn btn-success" 
+              type="button" 
+              (click)="processSwaps()"
+            >
+              <i class="fas fa-cogs me-1"></i>Process Swaps
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

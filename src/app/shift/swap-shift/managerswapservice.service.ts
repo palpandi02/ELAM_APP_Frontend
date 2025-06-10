@@ -45,4 +45,18 @@ export class ManagerswapserviceService {
       })
     );
   }
+
+  // New method for processing swaps
+  processSwaps(date: string): Observable<string> {
+    const headers = this.getHeaders();
+    return this.http.post(`${this.baseUrl}/processSwaps/${date}`, {}, { 
+      headers, 
+      responseType: 'text' 
+    }).pipe(
+      catchError(error => {
+        console.error('Failed to process swaps', error);
+        return throwError(() => new Error('Failed to process swaps'));
+      })
+    );
+  }
 }
